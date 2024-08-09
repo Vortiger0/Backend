@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('grupo_chats', function (Blueprint $table) {
-            $table->integer('idgrupos');
-            $table->integer('idchats');
+            $table->bigInteger('idgrupos')->unsigned();
+            $table->bigInteger('idchats')->unsigned();
 
             $table->foreign('idgrupos')->references('id')->on('grupos');
             $table->foreign('idchats')->references('id')->on('chats');

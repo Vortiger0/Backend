@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('generas', function (Blueprint $table) {
-            $table->bigInteger('idnotas');
-            $table->bigInteger('idusuario');
+            $table->bigInteger('idnotas')->unsigned();
+            $table->bigInteger('idusuario')->unsigned();
 
             $table->foreign('idnotas')->references('id')->on('notas');
             $table->foreign('idusuario')->references('id')->on('users');
