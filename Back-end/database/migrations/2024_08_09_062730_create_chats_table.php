@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $table->string('Nickname',45);
-            $table->string('Mensaje',120);
+            $table->string('nickname',20);
+            $table->string('mensaje',120);
             $table->timestamp('fecha-msj');
         });
     }

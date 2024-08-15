@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('grupos', function (Blueprint $table) {
             $table->id();
-            $table->string('Nombre',45);
-            $table->string('Categoria',45);
-            $table->string('Admin',15);
-            $table->string('Usuario',15);
-            $table->string('Descripcion',250);
+            $table->string('nombre',45);
+            $table->string('categoria',45);
+            $table->string('admin',15);
+            $table->string('usuario',15);
+            $table->string('descripcion',200);
             $table->timestamps();
         });
     }

@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('Creacion')->nullable();
-            $table->timestamp('Finalizacion')->nullable();
-            $table->string('Nombre',45);
-            $table->string('Descripcion',300);
-            $table->string('Categoria',45);
-            $table->boolean('Prioridad');
-            $table->boolean('Asignacion');
+            $table->timestamp('creacion')->nullable();
+            //$table->timestamps();
+            $table->timestamp('finalizacion')->nullable();
+            $table->string('nombre',45);
+            $table->string('descripcion',300);
+            $table->string('categoria',45);
+            $table->boolean('prioridad');
+            $table->boolean('asignacion');
         });
     }
 
