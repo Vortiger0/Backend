@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Genera extends Model
 {
     use HasFactory;
+
+    public function notas()
+    {
+
+        return $this->belongsTo(User::class);
+
+    }
+
+    public function users()
+    {
+
+        return $this->hasMany(Nota::class);
+
+    }
 }
