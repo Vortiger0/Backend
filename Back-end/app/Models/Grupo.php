@@ -13,9 +13,8 @@ class Grupo extends Model
 
     protected $fillable = [
         'nombre',
-        'categoria',
         'admin',
-        'usuario',
+        'nickname',
         'descripcion',
     ];
 

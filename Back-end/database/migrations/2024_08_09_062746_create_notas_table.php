@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->timestamp('finalizacion')->nullable();
-            $table->string('nombre',45);
             $table->string('descripcion',300);
             $table->string('categoria',45);
             $table->enum('prioridad', ['baja', 'media', 'alta']);

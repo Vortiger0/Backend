@@ -12,7 +12,6 @@ class Nota extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nombre',
         'descripcion',
         'categoria',
         'prioridad',

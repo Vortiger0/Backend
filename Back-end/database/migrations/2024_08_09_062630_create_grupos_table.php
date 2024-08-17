@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('grupos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',45);
-            $table->string('categoria',45);
-            $table->string('admin',15);
-            $table->string('usuario',15);
+            $table->enum('admin', ['usuario', 'administrador']);
+            $table->string('nickname',20);
             $table->string('descripcion',200);
             $table->timestamps();
         });
