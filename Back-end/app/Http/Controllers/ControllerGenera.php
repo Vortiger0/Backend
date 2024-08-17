@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 
 class ControllerGenera extends Controller
 {
-    public function genera(Request $request)
+    public function store(Request $request)
     {
         Validator::make($request->all(), [
-
-        ])->validate();
+            'idusuario' => 'required|exists:users,id',
+            'idnotas' => 'required|exists:notas,id',
+        ]);
     }
 
 }

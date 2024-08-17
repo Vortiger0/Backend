@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ControllerUser extends Controller
 {
-    public function user(Request $request)
+    public function store(Request $request)
     {
         Validator::make($request->all(), [
             'name' => 'required|max:30',
@@ -16,5 +16,12 @@ class ControllerUser extends Controller
             'email' => 'required|unique:users|max:45',
             'password' => 'required|max:40',
         ])->validate();
+
+        User::create([
+            'name' => $request['name'],
+            'nickname' => $request['nickname'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
     }
 }
