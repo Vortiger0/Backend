@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Models\NotaGrupo;
+use App\Models\NotaGrupo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

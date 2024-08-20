@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Models\Genera;
+use App\Models\Genera;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
