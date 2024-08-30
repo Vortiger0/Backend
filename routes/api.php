@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerUser;
 use App\Http\Controllers\ControllerGrupo;
+use App\Http\Controllers\ControllerNota;
+use App\Http\Controllers\ControllerChat;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,10 +27,19 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::post('/users', [ControllerUser::class, 'store']);
 Route::put('/users/{id}', [ControllerUser::class, 'update']);
 Route::delete('/users/{id}', [ControllerUser::class, 'destroy']);
-Route::post('/login', [Auth\AuthenticatedSessionController::class, 'login']);
+Route::post('/login', [AuthenticatedSessionController::class, 'login']);
 
 
-
-
-
+//Rutas de Grupo.
 Route::post('/grupos', [ControllerGrupo::class, 'store']);
+Route::put('/grupos/{id}', [ControllerGrupo::class, 'update']);
+Route::delete('/grupos/{id}', [ControllerGrupo::class, 'destroy']);
+
+
+//Rutas de Nota.
+Route::post('/notas', [ControllerNota::class, 'store']);
+Route::delete('/notas/{id}', [ControllerNota::class, 'destroy']);
+
+
+//Rutas de Chat.
+Route::post('/chats', [ControllerChat::class, 'store']);

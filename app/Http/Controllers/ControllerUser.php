@@ -30,7 +30,6 @@ class ControllerUser extends Controller
     }
 
 
-
     public function update(Request $request, $id)
     {
 
@@ -38,8 +37,9 @@ class ControllerUser extends Controller
 
         $datosValidados = $request->validate(
             [
-                'nickname' => 'required|unique:users|max:20',
-                'password' => 'required|max:40|confirmed',
+                'nickname' => 'unique:users|max:20',
+                'password' => 'max:40|confirmed',
+                'biografia' => 'max:120',
             ]
         );
 
@@ -47,6 +47,7 @@ class ControllerUser extends Controller
             $user->update([
                 'nickname' => $datosValidados['nickname'],
                 'password' => isset($datosValidados['password']) ? Hash::make($datosValidados['password']) : $user->password,
+                'biografia' => $datosValidados['biografia'],
             ]);
 
             return response()->json(['messaje' => 'Se ha actualizado los datos del usuario']);
@@ -59,6 +60,7 @@ class ControllerUser extends Controller
     public function destroy(Request $request, $id)
     {
         $user = User::find($id);
+
          if ($user) {
 
         $user->delete();

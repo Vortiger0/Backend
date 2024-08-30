@@ -20,4 +20,17 @@ class ControllerNota extends Controller
         $nota = Nota::create($datosvalidados);
 
     }
+
+    public function destroy(Request $request, $id)
+    {
+        $nota = Nota::find($id);
+         if ($nota) {
+
+        $nota->delete();
+
+        return response()->json('Nota eliminada correctamente', 204);
+     }  else {
+        return response()->json('No se eliminó la Nota', 406);
+     }
+    }
 }
