@@ -29,6 +29,8 @@ class ControllerUser extends Controller
         return response()->json("Usuario creado", 200);
     }
 
+
+
     public function update(Request $request, $id)
     {
 
@@ -56,8 +58,8 @@ class ControllerUser extends Controller
 
     public function destroy(Request $request, $id)
     {
-     if ($user) {
         $user = User::find($id);
+         if ($user) {
 
         $user->delete();
 
