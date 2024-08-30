@@ -28,4 +28,42 @@ class ControllerUser extends Controller
 
         return response()->json("Usuario creado", 200);
     }
+
+    public function update(Request $request, $id)
+    {
+
+        $user = User::find($id);
+
+        $datosValidados = $request->validate(
+            [
+                'nickname' => 'required|unique:users|max:20',
+                'password' => 'required|max:40|confirmed',
+            ]
+        );
+
+        if ($user) {
+            $user->update([
+                'nickname' => $datosValidados['nickname'],
+                'password' => isset($datosValidados['password']) ? Hash::make($datosValidados['password']) : $user->password,
+            ]);
+
+            return response()->json(['messaje' => 'Se ha actualizado los datos del usuario']);
+        } else {
+            return response()->json(['messaje' => 'No se pudieron actualizar los datos del usuario'], 404);
+        }
+    }
+
+
+    public function destroy(Request $request, $id)
+    {
+     if ($user) {
+        $user = User::find($id);
+
+        $user->delete();
+
+        return response()->json('Usuario eliminado correctamente', 204);
+     }  else {
+        return response()->json('No se eliminó el usuario', 406);
+     }
+    }
 }

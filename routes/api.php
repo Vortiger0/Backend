@@ -20,7 +20,13 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 
-
+//Rutas de Usuario.
 Route::post('/users', [ControllerUser::class, 'store']);
+Route::put('/users/{id}', [ControllerUser::class, 'update']);
+Route::delete('/users/{id}', [ControllerUser::class, 'destroy']);
+
+
+
+
 
 Route::post('/grupos', [ControllerGrupo::class, 'store']);
