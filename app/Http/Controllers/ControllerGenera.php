@@ -10,10 +10,12 @@ class ControllerGenera extends Controller
 {
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
+        $datosValidados = $request->validate([
             'idusuario' => 'required|exists:users,id',
             'idnotas' => 'required|exists:notas,id',
         ]);
+
+        $genera = Genera::create($datosValidados);
     }
 
 }

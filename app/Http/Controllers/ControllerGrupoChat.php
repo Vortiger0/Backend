@@ -10,9 +10,12 @@ class ControllerGrupoChat extends Controller
 {
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
+
+        $datosValidados = $request->validate([
             'idgrupos' => 'required|exists:grupos,id',
             'idchats' => 'required|exists:chats,id',
         ]);
+
+        $grupochat = GrupoChat::create($datosValidados);
     }
 }

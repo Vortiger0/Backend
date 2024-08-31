@@ -56,6 +56,14 @@ class AuthenticatedSessionController extends Controller
         return response()->json(['message' => 'Login successful']);//->noContent();
     }
 
+    public function logout(){
+
+        Auth::logout();
+
+        return redirec('/login')->whit('status', 'Sesion cerrada correctamente');
+
+    }
+
     /**
      * Destroy an authenticated session.
      */

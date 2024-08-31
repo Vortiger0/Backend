@@ -10,9 +10,12 @@ class ControllerNotaGrupo extends Controller
 {
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
+
+        $datosValidados = $request->validate([
            'idgrupos' => 'required|exists:grupos,id',
            'idnotas' => 'required|exists:notas,id',
         ]);
+
+        $notagrupo = NotaGrupo::create($datosValidados);
     }
 }

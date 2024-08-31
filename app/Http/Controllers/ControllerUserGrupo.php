@@ -10,9 +10,11 @@ class ControllerUserGrupo extends Controller
 {
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
+        $datosValidados = $request->validate([
             'idusuario' => 'required|exists:users,id',
             'idgrupos' => 'required|exists:grupos,id',
         ]);
+
+        $usergrupo = UserGrupo::create($datosValidados);
     }
 }

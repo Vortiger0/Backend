@@ -28,6 +28,7 @@ Route::post('/users', [ControllerUser::class, 'store']);
 Route::put('/users/{id}', [ControllerUser::class, 'update']);
 Route::delete('/users/{id}', [ControllerUser::class, 'destroy']);
 Route::post('/login', [AuthenticatedSessionController::class, 'login']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 
 
 //Rutas de Grupo.
