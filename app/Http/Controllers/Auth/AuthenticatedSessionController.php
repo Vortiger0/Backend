@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -35,7 +36,7 @@ class AuthenticatedSessionController extends Controller
     }
 
 
-
+    /*
     public function store(LoginRequest $request): Response
     {
         //$request->authenticate();
@@ -55,14 +56,28 @@ class AuthenticatedSessionController extends Controller
 
         return response()->json(['message' => 'Login successful']);//->noContent();
     }
+    */
 
-    public function logout(){
+    public function logou(Request $request): JsonResponse
+    {
+    $request->user()->currentAccessToken()->delete();
 
-        Auth::logout();
-
-        return redirec('/login')->whit('status', 'Sesion cerrada correctamente');
-
+    return response()->json(['message' => 'Logged out successfully']);
     }
+
+
+    public function logout(Request $request)//: RedirectResponse
+    {
+    //Auth::logout();
+
+    //$request->session()->invalidate();
+
+    //$request->session()->regenerateToken();
+    $sesiones_cerradas = $request->user()->tokens()->delete();
+    return redirect('/');
+    return response()->json(['message'=>"logout",'sesiones_cerradas'=>"$sesiones_cerradas"]);
+    }
+
 
     /**
      * Destroy an authenticated session.
